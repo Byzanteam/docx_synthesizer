@@ -21,7 +21,7 @@ module DocxSynthesizer
 
       begin
         stream.each do |entry|
-          zip_contents[entry.name] = entry.get_input_stream.read
+          zip_contents[entry.name] = entry.get_input_stream.try(:read)
         end
       rescue
         raise InvalidTemplateError
